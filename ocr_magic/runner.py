@@ -10,9 +10,9 @@ def pdf_to_png(pdf_path, out_name):
         subprocess.check_output(['echo', '***** PNGs temporarily saved in ' + out_name + ' *****'])
         subprocess.check_output(['convert', '-verbose', '-density',  '200', pdf_path, '-quality', '100', '-sharpen',  '0x1.0', out_name])
 
-def get_path():
-        input = raw_input('Path to a pdf: ')
-        return normalize_path(input)
+def get_path(filename):
+	path = '/home/ec2-user/Comb/django/comb/media/' + filename 
+        return normalize_path(path)
 
 def normalize_path(path):
         if path[-4:] == '.pdf':
@@ -40,10 +40,11 @@ def remove_files(path):
         
 
 if __name__=='__main__':
-        path = get_path() 
+	path = get_path('testPDFs/brody') 
        
         if os.path.isfile(path):
-                out_temp_dir = os.path.dirname(path) + '/scour_images'
+		# TODO: namespace pdfs and pngs (temp files?)
+                out_temp_dir = os.path.dirname(path) + '/comb_images'
                 if not os.path.exists(out_temp_dir):
                         os.makedirs(out_temp_dir)
 
