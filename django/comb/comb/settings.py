@@ -63,7 +63,7 @@ DATABASES = {
     }
 }
 
-MEDIA_ROOT='/home/ec2-user/Comb/django/media/'
+MEDIA_ROOT='/home/ubuntu/Comb/django/media/'
 MEDIA_URL='media/'
 
 # Internationalization
