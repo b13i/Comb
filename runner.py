@@ -27,6 +27,7 @@ def png_to_text(png_dir):
         only_png_filepaths = [ os.path.abspath(png_dir + os.path.sep + f) for f in listdir(png_dir) if isfile(join(png_dir, f)) and f.endswith('.png')]
         
         text_files = map(ocr, only_png_filepaths)
+        print text_files
         return text_files
 
 def ocr(png_file_path):
