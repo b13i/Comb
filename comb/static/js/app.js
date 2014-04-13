@@ -17,6 +17,7 @@ function submitFile() {
 	$('#pdf-button').text('Cancel');
 	$('#pdf-button').css('background', '#ea8557');
 	$('#change-pdf').hide();
+	$('.loading').show();
 }
 
 function changePDF() {
