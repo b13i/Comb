@@ -70,7 +70,7 @@ def pdf_to_text(filename):
         if os.path.isfile(path):
 		# TODO: namespace pdfs and pngs (temp files?)
                 millis = int(round(time.time() * 1000))
-                out_temp_dir = os.path.dirname(path) + '/comb_images/' + millis
+                out_temp_dir = os.path.dirname(path) + '/comb_images/' + str(millis)
                 if not os.path.exists(out_temp_dir):
                         os.makedirs(out_temp_dir)
 
