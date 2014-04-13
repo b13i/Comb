@@ -3,6 +3,7 @@ from django.http import HttpResponse, StreamingHttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import condition
+from models import OcrWrapper
 from ocr_magic import runner
 
 # Create your views here.
@@ -13,10 +14,11 @@ def index(request):
 def upload(request):
 	if request.method == 'POST':
 		file_contents = request.FILES
+		instance = OcrWrapper(file_field=request.FILES['user-pdf'])
+		instance.save()
 		pdf_name = str(file_contents['user-pdf'])
 		
 		text_array = runner.pdf_to_text(pdf_name)	
-		print 'text_array: ' + str(text_array)
 		text = ''.join(text_array)
 		context = { 'text': text }
 
