@@ -11,7 +11,7 @@ def pdf_to_png(pdf_path, out_name):
         subprocess.check_output(['convert', '-verbose', '-density',  '200', pdf_path, '-quality', '100', '-sharpen',  '0x1.0', out_name])
 
 def get_path(filename):
-	path = '/home/ec2-user/Comb/django/comb/media/' + filename 
+	path = '/home/ubuntu/Comb/django/comb/media/' + filename 
         return normalize_path(path)
 
 def normalize_path(path):
