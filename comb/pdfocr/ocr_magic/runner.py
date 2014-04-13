@@ -76,6 +76,9 @@ def pdf_to_text(filename):
 
                 out_png = out_temp_dir + os.path.sep + os.path.basename(path)[:-4] + '.png'
 
+                print 'out_temp_dir: ' + str(out_temp_dir)
+                print 'out_png' + str(out_png)
+
                 pdf_to_png(path, out_png)
                 text_files = png_to_text(out_temp_dir)
                 remove_files(out_temp_dir)
