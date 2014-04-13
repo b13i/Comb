@@ -31,9 +31,10 @@ app.controller('MainCtrl', function($scope) {
 });
 
 app.config(function($routeProvider) {
-	$routeProvider.when('/', {
+	$routeProvider.when('/index/', {
 		controller: 'MainCtrl',
 		templateUrl: '/partials/pdf_upload.html'
-	});
+	})
+	.otherwise({ redirectTo: '/index/' });
 });
 
