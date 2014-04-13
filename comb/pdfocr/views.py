@@ -3,7 +3,7 @@ from django.http import HttpResponse, StreamingHttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import condition
-from models import OcrWrapper
+from models import OcrWrapper, UploadFileForm
 from ocr_magic import runner
 
 # Create your views here.
@@ -14,26 +14,34 @@ def index(request):
 def upload(request):
 	if request.method == 'POST':
 		file_contents = request.FILES
-		instance = OcrWrapper(pdf=request.FILES['user-pdf'])
-		instance.save()
-		pdf_name = str(file_contents['user-pdf'])
+		form = UploadFileForm(request.POST, request.FILES)
+		print 'form: ' + str(form)
+		if form.is_valid():
+			pdf_name = str(file_contents['file'])
+			handle_uploaded_file(request.FILES['file'], pdf_name)
 		
-		text_array = runner.pdf_to_text(pdf_name)	
-		text = ''.join(text_array)
-		context = { 'text': text }
+			text_array = runner.pdf_to_text(pdf_name)	
+			text = ''.join(text_array)
+			context = { 'text': text }
 
 		# png_filepaths = runner.pdf_to_pnglist(pdf_name)
 		# return StreamingHttpResponse(request, png_filepaths)
 		# return stream_response(request)
 		
 	
-		if file_contents:
+			#if file_contents:
 			return render(request, 'pdfocr/results.html', context)
+			#else:
+		 		# TODO: Graceful failure
+		 		#return HttpResponse('Failed to upload file. Try again.')
 		else:
-		 	# TODO: Graceful failure
-		 	return HttpResponse('Failed to upload file. Try again.')
+			return HttpResponse('Failed to upload file. Try again.')
 
 
+def handle_uploaded_file(f, fname):
+	with open('/home/ubuntu/Comb/comb/media/' + fname, 'wb+') as destination:
+		for chunk in f.chunks():
+			destination.write(chunk)
 
 #def stream_response(request, png_filepaths):
  #   return StreamingHttpResponse(stream_response_generator(png_filepaths))
