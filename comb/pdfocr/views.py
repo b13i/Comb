@@ -16,7 +16,7 @@ def upload(request):
 		pdf_name = str(file_contents['user-pdf'])
 		
 		text_array = runner.pdf_to_text(pdf_name)	
-		print 'text_array: ' + text_array
+		print 'text_array: ' + str(text_array)
 		text = ''.join(text_array)
 		context = { 'text': text }
 
