@@ -9,5 +9,6 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^index/', include('pdfocr.urls')),
+    url(r'^', include('pdfocr.urls')),
 )
 

@@ -14,7 +14,7 @@ def index(request):
 def upload(request):
 	if request.method == 'POST':
 		file_contents = request.FILES
-		instance = OcrWrapper(file_field=request.FILES['user-pdf'])
+		instance = OcrWrapper(pdf=request.FILES['user-pdf'])
 		instance.save()
 		pdf_name = str(file_contents['user-pdf'])
 		

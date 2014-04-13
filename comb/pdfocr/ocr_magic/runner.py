@@ -26,9 +26,12 @@ def png_to_text(png_dir):
         print '\n***** Converting all PNGs in "' + png_dir + '" to text *****'
 
         only_png_filepaths = [ os.path.abspath(png_dir + os.path.sep + f) for f in listdir(png_dir) if isfile(join(png_dir, f)) and f.endswith('.png')]
-        get_page_nums = len(only_png_filepaths > 1)
-
-        text_files = map(ocr(get_page_nums), only_png_filepaths)
+	
+	text_files = []
+	for i, path in enumerate(only_png_filepaths):
+                get_page_nums = len(only_png_filepaths) > 1
+		text_files.append(ocr(path, get_page_nums))
+        # text_files = map(ocr(get_page_nums), only_png_filepaths)
         return text_files
 
 ################################### Streaming jazz
@@ -61,6 +64,8 @@ def ocr(png_file_path, get_page_nums):
         print "OCR'ing " + png_file_path
         if get_page_nums:
                 page_num = os.path.basename(png_file_path)[--5:-4]
+	else:
+		page_num = str(1)
         text = image_file_to_string(png_file_path, graceful_errors=True)
         text = '\nPAGE #' + str(page_num) + '\n' + text
         return text
