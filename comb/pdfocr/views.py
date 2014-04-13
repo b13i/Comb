@@ -25,7 +25,7 @@ def upload(request):
 		# 	return render(request, 'pdfocr/results.html', context)
 		# else:
 		# 	# TODO: Graceful failure
-			return HttpResponse('Failed to upload file. Try again.')
+			# return HttpResponse('Failed to upload file. Try again.')
 
 def stream_response(request, png_filepaths):
     return StreamingHttpResponse(stream_response_generator(png_filepaths))
