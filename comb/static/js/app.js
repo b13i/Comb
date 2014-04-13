@@ -1,9 +1,9 @@
-var app = angular.module('compApp', []);
+var app = angular.module('app', []);
 
 app.controller('MainCtrl', function($scope) {
 	console.log('Current controller: MainCtrl');
 
-	function chooseFile() {
+	$scope.chooseFile = function() {
 		$('#choose-pdf').change(function() {
 			// File has now been selected
 			$('#pdf-button').text('Convert to Text')
@@ -13,7 +13,7 @@ app.controller('MainCtrl', function($scope) {
 		$("#choose-pdf").click();
 	}
 
-	function submitFile() {
+	$scope.submitFile = function() {
 		$('.header').addClass('shrink');
 		$('#pdf-button').addClass('shrink');
 		$('span').addClass('shrink');
@@ -24,7 +24,7 @@ app.controller('MainCtrl', function($scope) {
 		$('#change-pdf').hide();
 	}
 
-	function changePDF() {
+	$scope.changePDF = function() {
 		$('#pdf-button').attr('onclick', 'chooseFile();');
 		$('#pdf-button').click();
 	}
@@ -35,5 +35,5 @@ app.config(function($routeProvider) {
 		controller: 'MainCtrl',
 		templateUrl: '/partials/pdf_upload.html'
 	});
-})
+});
 
