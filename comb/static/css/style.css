@@ -40,7 +40,22 @@ span {
 	border: 0px;
 }
 
-#pdf-button.shrink, #pdf-button.results {
+#pdf-button.shrink {
+	margin-top: 10px;
+	height: 50px;
+	width: 200px;
+	margin-top: 15px;	
+	font-size: 24px;
+	font-weight: 300;
+	letter-spacing: 2px;
+	color: #fff;
+	background: #1d9650;
+	border: 0px;
+}
+
+#home.results {
+	position: relative;
+	left: 200px;
 	margin-top: 10px;
 	height: 50px;
 	width: 200px;
@@ -69,8 +84,9 @@ span {
     text-align:center;
 }
 
-.header.shrink {
+.header.shrink, .header.results {
     height: 85px;
+    z-index: 0;
 }
 
 .loading {
