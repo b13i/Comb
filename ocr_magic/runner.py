@@ -40,7 +40,7 @@ def remove_files(path):
         
 
 if __name__=='__main__':
-	path = get_path('testPDFs/brody') 
+	path = get_path('brody') 
        
         if os.path.isfile(path):
 		# TODO: namespace pdfs and pngs (temp files?)
