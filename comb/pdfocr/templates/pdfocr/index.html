@@ -8,6 +8,8 @@
 
     <!-- Bootstrap -->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- App css -->
+    <link rel="stylesheet" type="text/css" href="index.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,9 +21,8 @@
   <body>
     <div class="container">
     <h1>Comb</h1>
-	<a href="./index.html">Reset</a>
-
-    <form action="upload/" enctype="multipart/form-data" method="post">
+    
+    <form action="upload/" enctype="multipart/form-data" method="post" id="pdf-form">
     	<div style="height:0px;overflow:hidden">
 		   <input type="file" id="choose-pdf" name="user-pdf" />
 		   <input type="submit" id="submit-pdf">

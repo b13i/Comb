@@ -29,6 +29,32 @@ def png_to_text(png_dir):
         text_files = map(ocr, only_png_filepaths)
         return text_files
 
+################################### Streaming jazz
+
+def get_png_filepaths(png_dir):
+        only_png_filepaths = [ os.path.abspath(png_dir + os.path.sep + f) for f in listdir(png_dir) if isfile(join(png_dir, f)) and f.endswith('.png')]
+        return only_png_filepaths
+
+def pdf_to_pnglist(filename):
+        path = get_path(filename) 
+       
+        if os.path.isfile(path):
+                # TODO: namespace pdfs and pngs (temp files?)
+                out_temp_dir = os.path.dirname(path) + '/comb_images'
+                if not os.path.exists(out_temp_dir):
+                        os.makedirs(out_temp_dir)
+
+                out_png = out_temp_dir + os.path.sep + os.path.basename(path)[:-4] + '.png'
+
+                pdf_to_png(path, out_png)
+                png_filepaths = get_png_filepaths(out_temp_dir)
+                return png_filepaths
+        else:
+                print path + ' is not a valid path. Try again.'
+                return None
+
+###################################
+
 def ocr(png_file_path):
         print "OCR'ing " + png_file_path
         return image_file_to_string(png_file_path, graceful_errors=True)
