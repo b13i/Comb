@@ -26,6 +26,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"), '/var/www/static/',)
 
 # Application definition
 
