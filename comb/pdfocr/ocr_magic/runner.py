@@ -26,8 +26,9 @@ def png_to_text(png_dir):
         print '\n***** Converting all PNGs in "' + png_dir + '" to text *****'
 
         only_png_filepaths = [ os.path.abspath(png_dir + os.path.sep + f) for f in listdir(png_dir) if isfile(join(png_dir, f)) and f.endswith('.png')]
-        
-        text_files = map(ocr, only_png_filepaths)
+        get_page_nums = len(only_png_filepaths > 1)
+
+        text_files = map(ocr(get_page_nums), only_png_filepaths)
         return text_files
 
 ################################### Streaming jazz
@@ -56,9 +57,13 @@ def pdf_to_pnglist(filename):
 
 ###################################
 
-def ocr(png_file_path):
+def ocr(png_file_path, get_page_nums):
         print "OCR'ing " + png_file_path
-        return image_file_to_string(png_file_path, graceful_errors=True)
+        if get_page_nums:
+                page_num = os.path.basename(png_file_path)[--5:-4]
+        text = image_file_to_string(png_file_path, graceful_errors=True)
+        text = '\nPAGE #' + str(page_num) + '\n' + text
+        return text
 
 def remove_files(path):
         print 'Removing images in ' + os.path.abspath(path)
