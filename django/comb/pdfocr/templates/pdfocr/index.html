@@ -7,7 +7,7 @@
     <title>Comb</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -20,7 +20,7 @@
     <h1>Comb</h1>
 	<a href="./index.html">Reset</a>
 
-    <form action="./index.html" enctype="multipart/form-data" method="post">
+    <form action="upload/" enctype="multipart/form-data" method="post">
     	<div style="height:0px;overflow:hidden">
 		   <input type="file" id="choose-pdf" name="user-pdf" />
 		   <input type="submit" id="submit-pdf">
@@ -29,10 +29,10 @@
 		<span id="selected-pdf"></span>
 		<span id="change-pdf" onclick="changePDF();">Clear selection</span> <!-- Change cursor! -->
 
-		<script>
-
-			function chooseFile() {
-				$('#choose-pdf').change(function() {
+    </form>
+	<script>
+		function chooseFile() {
+			$('#choose-pdf').change(function() {
 		   			// On file select
 		   			$('#pdf-button').text('Convert')
 		   			$('#pdf-button').attr('onclick', 'submitFile();')
@@ -50,11 +50,10 @@
 		   		$('#pdf-button').text('Upload');
 		   	}
 		</script>
-    </form>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   </body>
 </html>
