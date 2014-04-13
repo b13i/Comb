@@ -28,7 +28,7 @@ span {
 	border: 0px;
 }
 
-#pdf-button.shrink {
+#pdf-button.shrink, #pdf-button.results {
 	margin-top: 10px;
 	height: 50px;
 	width: 200px;
@@ -49,7 +49,7 @@ span {
     background: #cc5350;
     color:#fff;
     z-index: 1000;
-    height: 220px;
+    height: 100%;
     overflow: hidden;
     -webkit-transition: height 0.3s;
     -moz-transition: height 0.3s;
@@ -73,7 +73,7 @@ span {
     transition: all 0.3s;
 }
 
-.header.shrink span
+.header.shrink span, .header.results span
 {
     font-size:59px;
     right: 700px;
