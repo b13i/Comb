@@ -8,6 +8,7 @@
 
     <!-- Bootstrap -->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://css-spinners.com/css/spinner/three-quarters.css" type="text/css">
     <!-- App css -->
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
@@ -36,7 +37,8 @@
          <input type="file" id="choose-pdf" name="user-pdf" />
          <input type="submit" id="submit-pdf">
       </div>
-      <p class='loading'>Loading...</p>
+      <div class='three-quarters'>Loading...</div>
+      <div>(this will take awhile)</div>
       </form>
     </div>
 
