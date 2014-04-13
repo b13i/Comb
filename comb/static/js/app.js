@@ -14,7 +14,7 @@ function submitFile() {
 	$('span').addClass('shrink');
 	
 	$('#submit-pdf').click();
-	$('#pdf-button').text('Cancel');
+	$('#pdf-button').text("OCR'ing");
 	$('#pdf-button').css('background', '#ea8557');
 	$('#change-pdf').hide();
 	$('.loading').show();

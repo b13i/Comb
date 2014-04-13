@@ -4,6 +4,7 @@ from os import listdir
 from os.path import isfile, join
 from pytesser import *
 import shutil
+import time
 
 def pdf_to_png(pdf_path, out_name):
         subprocess.check_output(['echo', '\n***** Converting from PDF to PNG *****'])
@@ -68,7 +69,8 @@ def pdf_to_text(filename):
        
         if os.path.isfile(path):
 		# TODO: namespace pdfs and pngs (temp files?)
-                out_temp_dir = os.path.dirname(path) + '/comb_images'
+                millis = int(round(time.time() * 1000))
+                out_temp_dir = os.path.dirname(path) + '/comb_images/' + millis
                 if not os.path.exists(out_temp_dir):
                         os.makedirs(out_temp_dir)
 
